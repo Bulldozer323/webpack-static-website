@@ -1,0 +1,23 @@
+:root {
+  /* fonts */
+
+  /* colors */
+
+  /* transitions */
+  --transition-color: 0.2s ease color;
+  --transition-background-color: 0.2s ease background-color;
+  --transition-box-shadow: 0.2s ease box-shadow;
+  --transition-border: 0.2s ease border;
+  --transition-opacity: 0.2s ease opacity;
+  --transition-transform: 0.2s ease transform;
+  --transition-fill: 0.2s ease fill;
+}
+
+/* media-breakpoints */
+/* stylelint-disable */
+@custom-media --media-xs (min-width: 320px);
+@custom-media --media-sm (min-width: 480px);
+@custom-media --media-md (min-width: 768px);
+@custom-media --media-lg (min-width: 992px);
+@custom-media --media-xl (min-width: 1200px);
+@custom-media --media-xxl (min-width: 1500px);
