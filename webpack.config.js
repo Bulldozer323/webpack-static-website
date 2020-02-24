@@ -9,7 +9,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 const entries = {
-    entry: ['./src/js/index.js', './src/css/main.css'],
+    entry: ['./src/js/index.js', './src/css/style.css'],
     output: {
         filename: 'js/[name].js',
     },
@@ -101,7 +101,6 @@ const devServer = {
 module.exports = (env, argv) => {
     const {mode} = argv;
     const postCssPluginsProd = [
-        require('postcss-combine-media-query'),
         require('cssnano')({
             preset: [
                 'default',
@@ -124,6 +123,10 @@ module.exports = (env, argv) => {
                         loader: 'babel-loader',
                         options: {
                             presets: ['@babel/preset-env'],
+                            plugins: [
+                                ['@babel/transform-runtime'],
+                                ['@babel/plugin-transform-async-to-generator'],
+                            ]
                         },
                     },
                 },
@@ -156,6 +159,9 @@ module.exports = (env, argv) => {
                                     require('postcss-preset-env')({ stage: 0 }),
                                     require('postcss-focus'),
                                     require('autoprefixer'),
+                                    require('css-mqpacker')({
+                                        sort: true
+                                    }),
                                 ].concat(mode === 'production' ? postCssPluginsProd : []),
                             }
                         }
